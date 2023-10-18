@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    /* Styling for the calculator */
+    body {
+      background-color: rgb(198, 194, 194);
+    }
+
+    .calculator {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      height: 400px;
+      width: 400px;
+    }
+
+    .grid-item {
+      cursor: pointer;
+      border-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      color: white;
+      background-color: rgb(37, 36, 36);
+    }
+
+    .span-three {
+      grid-column: span 3;
+    }
+
+    #display {
+      padding-left: 20px;
+      cursor: default;
+      background-color: white;
+      color: black;
+      font-size: 30px;
+    }
+
+    .AC-button {
+      background-color: rgb(22, 145, 22);
+    }
+
+    .operator-button {
+      background-color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Calculator Container -->
+  <div class="calculator">
+    <!-- Grid Container for Buttons -->
+    <div class="grid-container">
+      <!-- Display Screen -->
+      <input type="text" class="grid-item span-three display" id="display">
+
+      <!-- Buttons -->
+      <button class="grid-item  AC-button" onclick="clearDisplay()">AC</button>
+      <button class="grid-item" onclick="appendToDisplay('9')">9</button>
+      <button class="grid-item" onclick="appendToDisplay('8')">8</button>
+      <button class="grid-item" onclick="appendToDisplay('7')">7</button>
+      <button class="grid-item operator-button" onclick="appendToDisplay('+')">+</button>
+      <button class="grid-item" onclick="appendToDisplay('4')">4</button>
+      <button class="grid-item" onclick="appendToDisplay('5')">5</button>
+      <button class="grid-item" onclick="appendToDisplay('6')">6</button>
+      <button class="grid-item operator-button" onclick="appendToDisplay('-')">-</button>
+      <button class="grid-item" onclick="appendToDisplay('1')">1</button>
+      <button class="grid-item" onclick="appendToDisplay('2')">2</button>
+      <button class="grid-item" onclick="appendToDisplay('3')">3</button>
+      <button class="grid-item operator-button" onclick="appendToDisplay('/')">÷</button>
+      <button class="grid-item" onclick="appendToDisplay('.')">.</button>
+      <button class="grid-item" onclick="appendToDisplay('0')">0</button>
+      <button class="grid-item" onclick="calculate()">=</button>
+      <button class="grid-item operator-button" onclick="appendToDisplay('*')">×</button>
+    </div>
+  </div>
+
+  <!-- JavaScript Code -->
+  <script>
+    // Function to append value to the display
+    function appendToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    // Function to clear the display
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    // Function to evaluate and display the result
+    function calculate() {
+      const display = document.getElementById('display');
+      display.value = eval(display.value);
+    }
+  </script>
+
+</body>
+
+</html>
